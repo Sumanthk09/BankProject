@@ -1,0 +1,31 @@
+<p>sendertransactionshistory!</p>
+<html>
+<div class="table-wrapper">
+    <table class="fl-table">
+      <thead>
+        <tr>
+          <th>Tid</th>
+          <th>Transaction amount</th>
+          <th>Sender</th>
+          <th>Receiver</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+       <tr *ngFor="let s of sendertransactions">
+          <td>{{s.tid }}</td>
+          <td>{{s.transactionamount}}</td>
+          <td>{{s.sender}}</td>
+          <td>{{s.receiver}}</td>
+          <td>{{s.date}}</td>
+          <td>{{s.time}}</td>
+          <td>{{s.status}}</td>
+          <!-- <td><button type="button" (click)="getsendertransactions()" name="button">Submit</button></td> -->
+        </tr>
+      </tbody>
+      
+    </table>
+  </div>
+  </html>
