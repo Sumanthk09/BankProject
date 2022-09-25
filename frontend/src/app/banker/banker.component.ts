@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, NgZone, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./banker.component.css']
 })
 export class BankerComponent implements OnInit 
-{
+{  
   httpc:any;
   pendingTransactions:any;
   getpendingtransactions()
@@ -20,10 +22,16 @@ export class BankerComponent implements OnInit
       })
   }
 
-  constructor(private router:Router,private http:HttpClient) {
+
+   constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private ngZone: NgZone,
+    private http:HttpClient
+  ) {
     this.httpc=http;
     this.getpendingtransactions()
-   }
+  }
 
    changestatuspendingtransactions(tid:string)
    {
@@ -33,6 +41,14 @@ export class BankerComponent implements OnInit
       })
    }
   ngOnInit(): void {
+  }
+
+  logout() {
+    return this.afAuth.signOut().then(() => {
+      this.ngZone.run(() => {
+        this.router.navigate(['phone']);
+      });
+    });
   }
 
 }

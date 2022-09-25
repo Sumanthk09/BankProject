@@ -11,7 +11,9 @@ describe('BankerComponent', () => {
       declarations: [ BankerComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(BankerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

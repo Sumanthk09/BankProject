@@ -9,8 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CustomerComponent implements OnInit 
 {
-  receiver:string="ANANTHAMURTHY SHAMASUNDARA";// from html input
-  amount:string="100000"; // from html input (after integrating take out these default values)
+  receiver:string="";// from html input
+  amount:string=""; // from html input (after integrating take out these default values)
   sendertransactions:any;
   ispresent:string=""
   data1:any;
@@ -20,22 +20,49 @@ export class CustomerComponent implements OnInit
   accdetails:any
   accdetails1:any
   sender1:any;
-
+  senderinfo:any;
+  senderinfo1:any;
+  phonenumber: any;
+  res:any;
+  r: any
 
   getsendertransactions()
   {
-    let response = this.httpc.get("http://localhost:8080/getUserTransactions?sender="+this.receiver)
+    
+    let response = this.httpc.get("http://localhost:8080/getUserTransactions?sender="+this.senderinfo)
     response.subscribe((data:any)=>{
       this.sendertransactions=data;
       console.log(data);
     })
   }
 
+  
 
-  getsenderdetails()
+  getSenderDetails()
   {
-    this.accdetails=localStorage.getItem("sender")
-    this.accdetails1=JSON.parse(this.accdetails);
+    let response = this.httpc.get("http://localhost:8080/getcustomer?sender="+this.senderinfo)
+    response.subscribe((data:any)=>{
+      // this.sendertransactions=data;
+      console.log(data);
+    })
+  }
+
+
+
+
+  getsenderName()
+  {
+    // this.accdetails=localStorage.getItem("sender")
+    // this.accdetails1=JSON.parse(this.accdetails);
+    this.phonenumber= localStorage.getItem("phonenumber")
+    console.log(this.phonenumber)
+    // this.phonenumber="+916304105860"
+    let response = this.httpc.get("http://localhost:8080/getbyphone?phonenumber="+this.phonenumber)
+    response.subscribe((data:any)=>{
+      this.senderinfo=data;
+      localStorage.setItem("senderinfo1",data);
+      console.log(data);
+    })
   }
 
 
@@ -76,10 +103,6 @@ export class CustomerComponent implements OnInit
         {
         if(localStorage.getItem("ispresent")=="yes")
         {
-          //console.log(this.sender1)
-          // this.sender=localStorage.getItem("sender")
-          // this.sender1=JSON.parse(this.sender);
-          // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
           let response=this.httpc.put("http://localhost:8080/transaction?senderaccholdername="+this.sender1.accholdername as string+"&&recieverraccholdername="+this.receiver as string+"&&amount="+this.amount as string+"&&inblacklist="+this.blacklist)
           response.subscribe((data:any)=>{
             //this.data1=JSON.parse(data);
@@ -88,6 +111,8 @@ export class CustomerComponent implements OnInit
           });
         }
         }
+
+        
       
   }
 
@@ -97,6 +122,9 @@ export class CustomerComponent implements OnInit
     this.httpc=http;
     //this.getsendertransactions();// give for transaction history button
     //this.maketransaction()
+    this.getsenderName()
+    // this.getsendertransactions()
+    this.getSenderDetails()
    }
 
   ngOnInit(): void {
