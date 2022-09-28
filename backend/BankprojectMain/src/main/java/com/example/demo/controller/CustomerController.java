@@ -30,7 +30,7 @@ public class CustomerController
         return cs.getDetails(accholdername,password);
     }
 	@GetMapping("/getbyphone")
-    public String getbyphone(@RequestParam String phonenumber) {
+    public CustomerDetails getbyphone(@RequestParam String phonenumber) {
         return cs.getByPhone(phonenumber);
     }
 	

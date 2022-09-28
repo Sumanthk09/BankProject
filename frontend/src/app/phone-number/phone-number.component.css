@@ -33,3 +33,9 @@ margin: 10rem 0 3rem 0;
   height: 50px;
   font-size: 14px
 }
+
+.login{
+  width: 40%;
+    padding: 10px;
+    margin: auto;
+}

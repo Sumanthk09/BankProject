@@ -2,19 +2,54 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
+<html>
+  <div class="img">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- <img class = "img1" src ="../../DBS.png"> -->
+    <ul class="navbar-nav ms-auto flex-nowrap">
+      <li class="nav-item">
+        <div style="cursor: pointer;" (click)="logout()" class="nav-link m-2 menu-item nav-active">Logout</div>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container register">
   <div class="row">
     <div class="col-md-3 register-left">
+      <!-- {"cid":"13645221972859","accholdername":"ANUPAMA N","email":"18bd1a056p@gmail.com","password":"anupama","balance":"300000",
+      "bankname":"DBS BANK LTD, MUMBAI BRANCH","phonenumber":"916304105860","od":"no","bic":"DBSSINBBIBD"} -->
+      <h1>Welcome</h1>
+      <div class="table-wrapper">
+        <table class="fl-table">
+          <tr>
+            <td>
+            {{senderinfo.accholdername}}
+            </td>
+          </tr>
+          <tr>
+            <td> {{senderinfo.cid}}</td>
+          </tr>
+          <tr>
+            <td> <B>OD:</B> {{senderinfo.od}}</td>
+          </tr>
+          <tr>
+            <td> <B>Bal Rs.</B> {{senderinfo.balance}}</td>
+          </tr>
+
+        </table>
+      </div>
       <!-- <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" /> -->
-      <h3>Welcome</h3>
-      <p>user details here!</p>
 
     </div>
     <div class="col-md-9 register-right">
       <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
-          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-            aria-selected="false">Transaction History</a>
+          <button class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+            (click)="showusertransactionhistory()" aria-controls="profile" aria-selected="false">Transaction
+            History</button>
+
+
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
@@ -23,18 +58,23 @@
           <div class="row register-form">
             <div class="col-md-6">
               <div class="form-group">
-                <input type="text" class="form-control"  [(ngModel)]="receiver" placeholder="Receiver Name *" value="" />
+                <input type="text" class="form-control" [(ngModel)]="receiver" placeholder="Receiver Name *" value="" />
               </div>
               <div class="form-group">
-                <input type="text" class="form-control"  [(ngModel)]="amount" placeholder="Amount *" value="" />
+                <input type="text" class="form-control" [(ngModel)]="amount" placeholder="Amount *" value="" />
               </div>
             </div>
             <br>
             <br>
-            <input type="submit" class="btnRegister"  (click)="maketransaction()" value="Submit" />
+            <input type="submit" class="btnRegister" (click)="maketransaction()" value="Submit" />
+          </div>
+          <div>
+            <p id="success">{{message}}</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+</html>

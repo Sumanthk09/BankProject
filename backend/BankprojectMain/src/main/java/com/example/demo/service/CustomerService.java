@@ -30,9 +30,11 @@ public class CustomerService
         }
         return null;
     }
-	public String getByPhone(String phonenumber) {
+	public CustomerDetails getByPhone(String phonenumber) {
 		// TODO Auto-generated method stub
-		return cr.findByPhonenumber(phonenumber.substring(1)).getAccholdername();
+		String pn=phonenumber.substring(1);
+		System.out.println(pn);
+		return cr.findByPhonenumber(pn);
 	}
 
 }

@@ -14,7 +14,7 @@ h2{
     transition: 0.7s;
 }
 .img{
-    /* background: url('bg.jpg')no-repeat; */
+     background: url('bg.jpg')no-repeat; 
     width: 100%;
     height: 200vh;
     background-size: cover;

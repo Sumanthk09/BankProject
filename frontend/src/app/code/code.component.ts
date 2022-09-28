@@ -55,7 +55,7 @@ export class CodeComponent implements OnInit {
         localStorage.setItem('user_data', JSON.stringify(response));
         this.res=response.user.phoneNumber;
         localStorage.setItem("phonenumber",JSON.stringify(this.res))
-        
+        console.log("Code: Phone NUmber: "+this.res)
         this.ngZone.run(() => {
           if(this.res =="+916281948653" || this.res == "+919121852999" || this.res == "+917013929132")
           {

@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'customer',
     component: CustomerComponent
   },
-  { path: '', redirectTo: '/customer', pathMatch: 'full' },
+  { path: '', redirectTo: '/phone', pathMatch: 'full' },
 ];
 
 @NgModule({

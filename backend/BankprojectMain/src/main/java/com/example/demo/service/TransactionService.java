@@ -81,10 +81,6 @@ public class TransactionService
 	        tr.save(transaction);
 	        //return "{pending}";
 	        return "{\"value\":\"pending\"}";
-
-
-
-	       
 	        }
 	        else
 	        {

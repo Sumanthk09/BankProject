@@ -93,3 +93,38 @@
     margin-bottom: -15%;
     color: #495057;
   }
+
+  .fl-table td {
+    text-align: center;
+    padding: 15px;
+  }
+  .fl-table tr,.fl-table td {
+    height: 10px;
+    padding-left: 70px;
+    align-items:center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 120px;
+    font-size: 13px;
+    text-overflow: ellipsis;
+  }
+  .img{
+    background: url('bg.jpg')no-repeat; 
+   width: 100%;
+   height: 200vh;
+   background-size: cover;
+   background-position: center;
+   position: relative;
+ }
+ .img1{
+ width: 100px;
+ height: 20px;
+ position: fixed;
+}
+
+#success{
+  padding-left: 100px;
+  color:blue;
+  font-size: 20px;
+}
